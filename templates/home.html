@@ -1,0 +1,42 @@
+<h1> Steam Calculator </h1>
+
+
+<form method="get" action=" {% url 'count'%}">  {% csrf_token %}
+
+  <div>
+        <select name= "Input1">
+          <option selected="selected" disabled>Input 1:</option>
+            <option value="Temperature">Temperature</option>
+            <option value="Pressure">Pressure</option>
+        </select>
+
+        <input type="text"  id="Input1value" placeholder="XXX" name="Input1value">
+  </div>
+
+  <div>
+        <select name="Input2" for="volumeinput">
+          <option selected="selected" disabled>Input 2:</option>
+            <option value="volume">Volume</option>
+            <option value="Enthalpy">Ehthalpy</option>
+            <option value="Entropy">Entropy</option>
+            <option value="Internalenergy">Internal Energy</option>
+            <option value="Dryness">Dryness Fraction </option>
+
+        </select>
+
+        <input type="text" id="Input2value" placeholder="XXX" name="Input2value">
+  </div>
+
+        <input type="submit" value="Count!">
+
+<form/>
+
+<h2> There to see <h2/>
+<br>
+
+<form action="{% url 'count'%}">
+  <textarea name="fulltext" rows="10" cols="80"></textarea>
+  <input type="submit" value="Count!" />
+</form>
+
+<label for="volumeinput2">volume</label>
