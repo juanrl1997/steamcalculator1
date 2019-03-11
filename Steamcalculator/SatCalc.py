@@ -22,18 +22,18 @@ def SatCalcP(Input1value,Input2value,Input2):
     csat=dfsat.columns.values.tolist()
 
     if Input2=='volume':
-        vinput=int(Input2value)
+        vinput=float(Input2value)
     elif Input2=='Enthalpy':
-        hinput=int(Input2value)
+        hinput=float(Input2value)
     elif Input2=='Entropy':
-        sinput=int(Input2value)
+        sinput=float(Input2value)
     elif Input2=='Internalenergy':
-        uinput=int(Input2value)
+        uinput=float(Input2value)
     elif Input2=='Dryness':
-        xinput=int(Input2value)
+        xinput=float(Input2value)
 
 
-    Pinput=int(Input1value)
+    Pinput=float(Input1value)
 
     #Find closest value
     subP = dfsat['P'] - Pinput

@@ -3,16 +3,7 @@
 import numpy as np
 import pandas as pd
 
-Pinput=-1
-Tinput=-1
-uinput=-1
-vinput=-1
-hinput=-1
-sinput=-1
-xinput=-1
 
-df = pd.read_csv('/Users/juanrodriguezlacasa/Documents/Imperial/ME4/FYP/Steam/dataunsaturated.csv')
-c=df.columns.values.tolist()
 
 #start Calculation
 
@@ -34,18 +25,18 @@ def unSatCalcP(Input1value,Input2value,Input2):
       250.4, 263.9, 275.6, 285.8, 295, 303.3, 311, 324.7, 336.7, 347.4, 357, 365.7, 373.7]
 
     if Input2=='volume':
-        vinput=int(Input2value)
+        vinput=float(Input2value)
     elif Input2=='Enthalpy':
-        hinput=int(Input2value)
+        hinput=float(Input2value)
     elif Input2=='Entropy':
-        sinput=int(Input2value)
+        sinput=float(Input2value)
     elif Input2=='Internalenergy':
-        uinput=int(Input2value)
+        uinput=float(Input2value)
     elif Input2=='Dryness':
-        xinput=int(Input2value)
+        xinput=float(Input2value)
 
 
-    Pinput=int(Input1value)
+    Pinput=float(Input1value)
 
     #Creating an array of only P values / no duplicates
     P=df['P'].drop_duplicates()

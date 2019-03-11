@@ -11,12 +11,15 @@ from SatCalc import SatCalcP
 from unSatCalc import unSatCalcP
 from unSatCalc import unSatCalcT
 
+import numpy as np
+import pandas as pd
+
 def home(request):
     return render(request,'home.html')
     print('hello')
 
 def count(request):
-
+    state='BLABLA'
 
 
     values=[0,0,0,0,0,0,0,0,0]
@@ -29,20 +32,23 @@ def count(request):
     Input2=str(request.GET['Input2'])
 
     Input1value = request.GET['Input1value']
-    Input2value=request.GET['Input2value']
+    Input2value = request.GET['Input2value']
+    print(Input1value)
+    print(Input2value)
 
-    '''state=Tempsat(Input1value,Input2value)
-    values=unSatCalcT(Input1value,Input2value,Input2)'''
+
+    #state=Presssat(Input1value,Input2value,Input2)
+    #values=SatCalcT(Input1value,Input2value,Input2)
 
     if Input1=='Temperature':
-        state=Tempsat(Input1value,Input2value)
+        state=Tempsat(Input1value,Input2value,Input2)
         if state=='saturated':
             values=SatCalcT(Input1value,Input2value,Input2)
         elif state=='unsaturated':
             values=unSatCalcT(Input1value,Input2value,Input2)
 
     elif Input1=='Pressure':
-        state=Presssat(Input1value,Input2value)
+        state=Presssat(Input1value,Input2value,Input2)
         print(state)
         if state=='saturated':
             values=SatCalcP(Input1value,Input2value,Input2)
