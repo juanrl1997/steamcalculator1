@@ -8,26 +8,48 @@ from compute import Tempsat
 from compute import Presssat
 from SatCalc import SatCalcT
 from SatCalc import SatCalcP
+from unSatCalc import unSatCalcP
+from unSatCalc import unSatCalcT
 
 def home(request):
     return render(request,'home.html')
+    print('hello')
 
 def count(request):
 
 
+
+    values=[0,0,0,0,0,0,0,0,0]
+
+
+# Input 1: Pressure or Temperature
     Input1=str(request.GET['Input1'])
+
+# Input 2: volume, enthalpy, entropy...
     Input2=str(request.GET['Input2'])
 
     Input1value = request.GET['Input1value']
     Input2value=request.GET['Input2value']
 
-    if Input1=='Pressure':
-        state=Tempsat(Input1value,Input2value)
-        values=SatCalcT(Input1value,Input2value)
+    '''state=Tempsat(Input1value,Input2value)
+    values=unSatCalcT(Input1value,Input2value,Input2)'''
 
-    elif Input1=='Temperature':
+    if Input1=='Temperature':
+        state=Tempsat(Input1value,Input2value)
+        if state=='saturated':
+            values=SatCalcT(Input1value,Input2value,Input2)
+        elif state=='unsaturated':
+            values=unSatCalcT(Input1value,Input2value,Input2)
+
+    elif Input1=='Pressure':
         state=Presssat(Input1value,Input2value)
-        values=SatCalcP(Input1value,Input2value)
+        print(state)
+        if state=='saturated':
+            values=SatCalcP(Input1value,Input2value,Input2)
+        elif state=='unsaturated':
+            values=unSatCalcP(Input1value,Input2value,Input2)
+
+
 
     return render(request,'count.html',{'state':state,'Temperature':values[1],'Pressure':values[0],
     'volume':values[2],'Internalenergy':values[3],'Enthalpy':values[4], 'Entropy':values[5],

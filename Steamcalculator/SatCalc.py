@@ -5,17 +5,21 @@
 import numpy as np
 import pandas as pd
 
-Pinput=-1
-uinput=-1
-hinput=-1
-sinput=-1
-xinput=-1
 
-dfsat=pd.read_csv('/Users/juanrodriguezlacasa/Documents/Imperial/ME4/FYP/Steam/Data.csv')
-dfP=pd.read_csv('/Users/juanrodriguezlacasa/Documents/Imperial/ME4/FYP/Steam/dataunsaturated.csv')
-csat=dfsat.columns.values.tolist()
 
 def SatCalcP(Input1value,Input2value,Input2):
+
+    Pinput=-1
+    Tinput=-1
+    uinput=-1
+    vinput=-1
+    hinput=-1
+    sinput=-1
+    xinput=-1
+
+    dfsat=pd.read_csv('/Users/juanrodriguezlacasa/Documents/Imperial/ME4/FYP/Steam/Data.csv')
+    dfP=pd.read_csv('/Users/juanrodriguezlacasa/Documents/Imperial/ME4/FYP/Steam/dataunsaturated.csv')
+    csat=dfsat.columns.values.tolist()
 
     if Input2=='volume':
         vinput=int(Input2value)
@@ -100,6 +104,18 @@ def SatCalcP(Input1value,Input2value,Input2):
 
 def SatCalcT(Input1value,Input2value,Input2):
 
+    Pinput=-1
+    Tinput=-1
+    uinput=-1
+    vinput=-1
+    hinput=-1
+    sinput=-1
+    xinput=-1
+
+    dfsat=pd.read_csv('/Users/juanrodriguezlacasa/Documents/Imperial/ME4/FYP/Steam/Data.csv')
+    dfP=pd.read_csv('/Users/juanrodriguezlacasa/Documents/Imperial/ME4/FYP/Steam/dataunsaturated.csv')
+    csat=dfsat.columns.values.tolist()
+
     if Input2=='volume':
         vinput=int(Input2value)
     elif Input2=='Enthalpy':
@@ -177,4 +193,4 @@ def SatCalcT(Input1value,Input2value,Input2):
         P=DATA_VALUES[0]
         x=xinput
 
-    return[P,T,v,u,h,s,x]
+        return[P,T,v,u,h,s,x]
