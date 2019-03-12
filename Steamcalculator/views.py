@@ -19,7 +19,7 @@ def home(request):
     print('hello')
 
 def count(request):
-    state='BLABLA'
+
 
 
     values=[0,0,0,0,0,0,0,0,0]
@@ -33,9 +33,8 @@ def count(request):
 
     Input1value = request.GET['Input1value']
     Input2value = request.GET['Input2value']
-    print(Input1value)
-    print(Input2value)
-
+    print(Input1)
+    print(Input2)
 
     #state=Presssat(Input1value,Input2value,Input2)
     #values=SatCalcT(Input1value,Input2value,Input2)

@@ -47,7 +47,7 @@ def unSatCalcP(Input1value,Input2value,Input2):
     #Find closest row to the P value
     subP=P-Pinput
     subPls=subP.values.tolist()
-    m = int(min(i for i in subP if i >= 0))
+    m = float(min(i for i in subP if i >= 0))
 
     #row of pressure within the no duplicates pressure array
     rowOfPressure=subPls.index(m)
@@ -320,17 +320,17 @@ def unSatCalcT(Input1value,Input2value,Input2):
       250.4, 263.9, 275.6, 285.8, 295, 303.3, 311, 324.7, 336.7, 347.4, 357, 365.7, 373.7]
 
     if Input2=='volume':
-            vinput=int(Input2value)
+            vinput=float(Input2value)
     elif Input2=='Enthalpy':
-            hinput=int(Input2value)
+            hinput=float(Input2value)
     elif Input2=='Entropy':
-            sinput=int(Input2value)
+            sinput=float(Input2value)
     elif Input2=='Internalenergy':
-            uinput=int(Input2value)
+            uinput=float(Input2value)
     elif Input2=='Dryness':
-            xinput=int(Input2value)
+            xinput=float(Input2value)
 
-    Tinput=int(Input1value)
+    Tinput=float(Input1value)
 
     #Sort by values of T instead of P
     df=df.sort_values(by=['T','P'])
@@ -346,7 +346,7 @@ def unSatCalcT(Input1value,Input2value,Input2):
     #Find closest row to the P value
     subT=T-Tinput
     subTls=subT.values.tolist()
-    m = int(min(i for i in subT if i >= 0))
+    m = float(min(i for i in subT if i >= 0))
 
     #row of pressure within the no duplicates pressure array
     rowOfTemperature=subTls.index(m)
@@ -385,7 +385,7 @@ def unSatCalcT(Input1value,Input2value,Input2):
     #################################################################################
 
 
-        if uinput!=-1:
+    if uinput!=-1:
             #Calculate values at precise position of Pressure
             DATA_VALUES=ratioT*DATA_VALUESHIGH+(1-ratioT)*DATA_VALUESLOW
             #lookup u
@@ -408,7 +408,7 @@ def unSatCalcT(Input1value,Input2value,Input2):
             h=ratiou*DATA_VALUES[rowOfu,4]+(1-ratiou)*DATA_VALUES[rowOfu-1,4]
             s=ratiou*DATA_VALUES[rowOfu,5]+(1-ratiou)*DATA_VALUES[rowOfu-1,5]
 
-        if vinput!=-1:
+    if vinput!=-1:
             #Calculate values at precise position of Pressure
             DATA_VALUES=ratioT*DATA_VALUESHIGH+(1-ratioT)*DATA_VALUESLOW
             #lookup v
@@ -431,7 +431,7 @@ def unSatCalcT(Input1value,Input2value,Input2):
             h=ratiov*DATA_VALUES[rowOfv,4]+(1-ratiov)*DATA_VALUES[rowOfv-1,4]
             s=ratiov*DATA_VALUES[rowOfv,5]+(1-ratiov)*DATA_VALUES[rowOfv-1,5]
 
-        if hinput!=-1:
+    if hinput!=-1:
 
             #Calculate values at precise position of Pressure
             DATA_VALUES=ratioT*DATA_VALUESHIGH+(1-ratioT)*DATA_VALUESLOW
@@ -455,7 +455,7 @@ def unSatCalcT(Input1value,Input2value,Input2):
             h=ratioh*DATA_VALUES[rowOfh,4]+(1-ratioh)*DATA_VALUES[rowOfh-1,4]
             s=ratioh*DATA_VALUES[rowOfh,5]+(1-ratioh)*DATA_VALUES[rowOfh-1,5]
 
-        if sinput!=-1:
+    if sinput!=-1:
             #Calculate values at precise position of Pressure
             DATA_VALUES=ratioT*DATA_VALUESHIGH+(1-ratioT)*DATA_VALUESLOW
             #lookup s
