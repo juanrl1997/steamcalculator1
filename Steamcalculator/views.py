@@ -10,13 +10,109 @@ from SatCalc import SatCalcT
 from SatCalc import SatCalcP
 from unSatCalc import unSatCalcP
 from unSatCalc import unSatCalcT
+from plots import Pvplot
 
 import numpy as np
 import pandas as pd
 
+
+
+import io
+import matplotlib.pyplot as plt
+import numpy as np
+
+from pylab import *
+import PIL
+import PIL.Image
+import io
+from io import *
+
+from io import BytesIO
+import base64
+import matplotlib.pyplot as plt
+import numpy as np
+
+
+'''def setPlt():
+    numPts = 50
+    x = [1,2,3,4]
+    y = [1,2,3,4]
+    sz = 2 ** (10*np.random.rand(numPts))
+    plt.scatter(x, y, s=sz, alpha=0.5)
+
+def pltToSvg():
+    buf = io.BytesIO()
+    plt.savefig(buf, format='png', bbox_inches='tight')
+    s = buf.getvalue()
+    buf.close()
+    return s'''
+
 def home(request):
-    return render(request,'home.html')
-    print('hello')
+    dfsat=pd.read_csv('/Users/juanrodriguezlacasa/Documents/Imperial/ME4/FYP/Steam/Data.csv')
+    csat=dfsat.columns.values.tolist()
+
+    P=dfsat['P'].tolist()
+    vg=dfsat['vg'].tolist()
+    vf=dfsat['vf'].tolist()
+    plt.semilogx(vg,P)
+    plt.semilogx(vf,P)
+    plt.xlabel('v')
+    plt.ylabel('P')
+    Pcrit=220.64
+    vcrit=0.003106
+    plt.plot(vcrit,Pcrit,'x')
+
+
+    buffer = BytesIO()
+    plt.savefig(buffer, format='png')
+    buffer.seek(0)
+    image_png = buffer.getvalue()
+    buffer.close()
+
+    graphic = base64.b64encode(image_png)
+    graphic = graphic.decode('utf-8')
+
+    return render(request, 'home.html',{'graphic':graphic})
+    '''return render(request,'home.html')'''
+    '''setPlt() # create the plot
+    svg = pltToSvg() # convert plot to SVG
+    plt.cla() # clean up plt so it can be re-used
+    response = HttpResponse(svg, content_type='image/PNG')'''
+
+'''def graphic(request):
+    dfsat=pd.read_csv('/Users/juanrodriguezlacasa/Documents/Imperial/ME4/FYP/Steam/Data.csv')
+    csat=dfsat.columns.values.tolist()
+
+    P=dfsat['P'].tolist()
+    vg=dfsat['vg'].tolist()
+    vf=dfsat['vf'].tolist()
+    plt.semilogx(vg,P)
+    plt.semilogx(vf,P)
+    plt.xlabel('v')
+    plt.ylabel('P')
+    Pcrit=220.64
+    vcrit=0.003106
+    plt.plot(vcrit,Pcrit,'x')
+
+    buffer = io.BytesIO()
+    canvas = pylab.get_current_fig_manager().canvas
+    canvas.draw()
+    graphIMG = PIL.Image.fromstring('RGB', canvas.get_width_height(), canvas.tostring_rgb())
+    graphIMG.save(buffer, "PNG")
+    pylab.close()
+
+    return HttpResponse (buffer.getvalue(), content_type="Image/png")'''
+
+
+
+
+
+
+
+
+
+    #return render(request,'home.html')
+
 
 def count(request):
 
