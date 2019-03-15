@@ -11,6 +11,7 @@ from SatCalc import SatCalcP
 from unSatCalc import unSatCalcP
 from unSatCalc import unSatCalcT
 from plots import Pvplot
+from plots import Phplot
 
 import numpy as np
 import pandas as pd
@@ -28,7 +29,6 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
-
 def home(request):
     Pvplot()
 
@@ -42,7 +42,19 @@ def home(request):
     graphic = base64.b64encode(image_png)
     graphic = graphic.decode('utf-8')
 
-    return render(request, 'home.html',{'graphic':graphic})
+    Phplot()
+
+    buffer = BytesIO()
+    plt.savefig(buffer, format='png')
+    buffer.seek(0)
+    image_png = buffer.getvalue()
+    buffer.close()
+
+    graphic2 = base64.b64encode(image_png)
+    graphic2 = graphic2.decode('utf-8')
+
+
+    return render(request, 'home.html',{'graphic':graphic,'graphic2':graphic2})
 
 
 def count(request):
