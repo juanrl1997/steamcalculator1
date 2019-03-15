@@ -92,6 +92,12 @@ def Presssat(Input1value,Input2value,Input2):
 
 def Tempsat(Input1value,Input2value,Input2):
     state='unsaturated'
+    Pinput=-1
+    uinput=-1
+    hinput=-1
+    sinput=-1
+    xinput=-1
+    vinput=-1
     Tinput=float(Input1value)
     if Input2=='volume':
         vinput=float(Input2value)
