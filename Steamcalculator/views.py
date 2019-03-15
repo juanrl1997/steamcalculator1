@@ -10,18 +10,14 @@ from SatCalc import SatCalcT
 from SatCalc import SatCalcP
 from unSatCalc import unSatCalcP
 from unSatCalc import unSatCalcT
+
 from plots import Pvplot
 from plots import Phplot
+from plots import Tsplot
+from plots import Hsplot
 
 import numpy as np
 import pandas as pd
-
-
-
-import io
-import matplotlib.pyplot as plt
-import numpy as np
-
 
 from io import BytesIO
 import base64
@@ -30,6 +26,7 @@ import numpy as np
 
 
 def home(request):
+# plot 1
     Pvplot()
 
 
@@ -41,7 +38,7 @@ def home(request):
 
     graphic = base64.b64encode(image_png)
     graphic = graphic.decode('utf-8')
-
+# plot 2
     Phplot()
 
     buffer = BytesIO()
@@ -52,9 +49,35 @@ def home(request):
 
     graphic2 = base64.b64encode(image_png)
     graphic2 = graphic2.decode('utf-8')
+# plot 3
+    Tsplot()
+
+    buffer = BytesIO()
+    plt.savefig(buffer, format='png')
+    buffer.seek(0)
+    image_png = buffer.getvalue()
+    buffer.close()
+
+    graphic3 = base64.b64encode(image_png)
+    graphic3 = graphic3.decode('utf-8')
+
+# plot 4
+    Hsplot()
+
+    buffer = BytesIO()
+    plt.savefig(buffer, format='png')
+    buffer.seek(0)
+    image_png = buffer.getvalue()
+    buffer.close()
+
+    graphic4 = base64.b64encode(image_png)
+    graphic4 = graphic4.decode('utf-8')
 
 
-    return render(request, 'home.html',{'graphic':graphic,'graphic2':graphic2})
+
+
+    return render(request, 'home.html',{'graphic':graphic,'graphic2':graphic2,
+    'graphic3':graphic3,'graphic4':graphic4})
 
 
 def count(request):
