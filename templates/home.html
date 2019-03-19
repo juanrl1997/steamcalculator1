@@ -1,11 +1,44 @@
-<h1> Steam Calculator </h1>
+
+
+<html>
+{% load staticfiles %}
+  <head>
+    <title> Steam Calculator</title>
+
+
+    <!---{% load staticfiles %} href="{% static 'css/Steamcalculator.css' %}"--->
+  <link rel="stylesheet" href="{{ STATIC_URL }}css/Steamcalculator.css">
+
+  <link rel="stylesheet" href="{% static 'css/Steamcalculator.css' %}">
+
+  </head>
+<body>
+
+<header id="main-header">
+    <div class="container">
+    <h1> Steam Calculator</h1>
+    </div>
+
+</header>
+
+<nav id="navbar">
+    <div class="container">
+        <ul>
+            <li><a href="#">Steam Calculator</a></li>
+            <li><a href="#">Theory</a></li>
+            <li><a href="#">Other Calculator</a></li>
+            <li><a href="#">Feedback</a></li>
+        </ul>
+    </div>
+</nav>
+
 
 
 <form method="get" action=" {% url 'count'%}">  {% csrf_token %}
 
   <div>
         <select name= "Input1">
-          <option selected="selected" disabled>Input 1:</option>
+            <option selected="selected" disabled>Input 1:</option>
             <option value="Temperature">Temperature</option>
             <option value="Pressure">Pressure</option>
         </select>
@@ -15,7 +48,7 @@
 
   <div>
         <select name="Input2" for="volumeinput">
-          <option selected="selected" disabled>Input 2:</option>
+            <option selected="selected" disabled>Input 2:</option>
             <option value="volume">Volume</option>
             <option value="Enthalpy">Ehthalpy</option>
             <option value="Entropy">Entropy</option>
@@ -30,3 +63,6 @@
         <input type="submit" value="Count!">
 
 <form/>
+
+</body>
+</html>
