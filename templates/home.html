@@ -8,7 +8,7 @@
 
     {% load staticfiles %}
     <!---{% load staticfiles %} href="{% static 'css/Steamcalculator.css' %}"--->
-            <link rel="stylesheet" href="{% static 'css/mystyle.css' %}">
+        <link rel="stylesheet" href="{% static 'css/mystyle.css' %}">
 
   </head>
 <body>
@@ -23,45 +23,82 @@
 <nav id="navbar">
     <div class="container">
         <ul>
-            <li><a href="#">Steam Calculator</a></li>
+            <li><a href="{% url 'home'%}">Steam Calculator</a></li>
             <li><a href="#">Theory</a></li>
             <li><a href="#">Other Calculator</a></li>
-            <li><a href="#">Feedback</a></li>
+            <li><a href="https://www.marca.com/">Feedback</a></li>
         </ul>
     </div>
 </nav>
 
 
+<div class="container">
+    <div class="box-2">
+        <p>
+
+  Input 1:
+      First select the physical variable T or P (more variables can be
+      selected in input 2) using the dropdown box and then enter value
+
+        </p>
+    </div>
+    <div class="box-2">
+        <p>
+
+  Input 2:
+      Choose from other values...
+
+        </p>
+    </div>
+
+</div>
 
 <form method="get" action=" {% url 'count'%}">  {% csrf_token %}
 
-  <div>
-        <select name= "Input1">
-            <option selected="selected" disabled>Input 1:</option>
-            <option value="Temperature">Temperature</option>
-            <option value="Pressure">Pressure</option>
-        </select>
+<div class="container">
+    <div class="box">
 
-        <input type="text"  id="Input1value" placeholder="XXX" name="Input1value">
-  </div>
 
-  <div>
-        <select name="Input2" for="volumeinput">
-            <option selected="selected" disabled>Input 2:</option>
-            <option value="volume">Volume</option>
-            <option value="Enthalpy">Ehthalpy</option>
-            <option value="Entropy">Entropy</option>
-            <option value="Internalenergy">Internal Energy</option>
-            <option value="Dryness">Dryness Fraction </option>
 
-        </select>
+    <select class="styled-select rounded" name= "Input1">
+        <option selected="selected" disabled>Input 1:</option>
+        <option value="Temperature">Temperature</option>
+        <option value="Pressure">Pressure</option>
+    </select>
 
-        <input type="text" id="Input2value" placeholder="XXX" name="Input2value">
-  </div>
 
-        <input type="submit" value="Count!">
+<input class="my-form" type="text"  id="Input1value" placeholder="Type value" name="Input1value">
+
+    </div>
+</div>
+
+<div class="container">
+  <div class="box">
+
+
+
+    <select class="styled-select rounded" name="Input2" for="volumeinput">
+        <option selected="selected" disabled>Input 2:</option>
+        <option value="volume">Volume</option>
+        <option value="Enthalpy">Ehthalpy</option>
+        <option value="Entropy">Entropy</option>
+        <option value="Internalenergy">Internal Energy</option>
+        <option value="Dryness">Dryness Fraction </option>
+    </select>
+
+    <input class="my-form" type="text" id="Input2value" placeholder="Type value" name="Input2value">
+    </div>
+</div>
+
+<div class="container">
+    <div class="box">
+        <input class="button" type="submit" value="Calculate!">
+    </div>
+
+</div>
 
 <form/>
 
+</div>
 </body>
 </html>

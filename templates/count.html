@@ -1,16 +1,78 @@
-<h1>Output Values</h1>
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
 
-State: {{state}} <br>
-Temperature: {{Temperature}} <br>
-Pressure: {{Pressure}} <br>
-Volume: {{volume}} <br>
-Internal energy; {{Internalenergy}} <br>
-Enthalpy: {{Enthalpy}} <br>
-Entropy: {{Entropy}} <br>
-Dryness fraction: {{Dryness}} <br>
-{{Input1}} <br>
-{{Input2}}
-{{BLA}}
+  <head>
+    <title> Steam Calculator</title>
+
+    {% load staticfiles %}
+    <!---{% load staticfiles %} href="{% static 'css/Steamcalculator.css' %}"--->
+        <link rel="stylesheet" href="{% static 'css/mystyle.css' %}">
+
+  </head>
+<body>
+
+<header id="main-header">
+    <div class="container">
+    <h1> Steam Calculator</h1>
+    </div>
+
+</header>
+
+<nav id="navbar">
+    <div class="container">
+        <ul>
+            <li><a href="{% url 'home'%}">Steam Calculator</a></li>
+            <li><a href="#">Theory</a></li>
+            <li><a href="#">Other Calculator</a></li>
+            <li><a href="https://www.marca.com/">Feedback</a></li>
+        </ul>
+    </div>
+</nav>
+
+
+<div class="container">
+    <div class="box">
+        <h2> Output Values</h2>
+        <table class="table">
+            <tr>
+                <td>State</td>
+                <td>{{state}}</td>
+            </tr>
+            <tr>
+                <td>Temperature</td>
+                <td>{{Temperature}}</td>
+            </tr>
+            <tr>
+                <td>Pressure</td>
+                <td>{{Pressure}}</td>
+            </tr>
+            <tr>
+                <td>Volume</td>
+                <td>{{volume}}</td>
+            </tr>
+            <tr>
+                <td>Internal energy</td>
+                <td>{{Internalenergy}}</td>
+            </tr>
+            <tr>
+                <td>Enthalpy</td>
+                <td>{{Enthalpy}}</td>
+            </tr>
+            <tr>
+                <td>Entropy</td>
+                <td>{{Entropy}}</td>
+            </tr>
+            <tr>
+                <td>Dryness fraction</td>
+                <td>{{Dryness}}</td>
+            </tr>
+        </table>
+
+    </div>
+</div>
+
+
 
 
 <br>
