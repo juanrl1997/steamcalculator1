@@ -1,1 +1,1 @@
-web: gunicorn Steamcalculator.wsgi
+web: gunicorn Steamcalculator-project.wsgi
